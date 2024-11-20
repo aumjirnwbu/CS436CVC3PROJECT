@@ -1,0 +1,97 @@
+﻿@model CS436CVC3PROJECT.Models.EmailMessage
+
+<h2 class="text-center mb-4">Read Email</h2>
+
+<div class="container">
+    <div class="email-details">
+        <div class="mb-3">
+            <h4>Subject: @Model.Subject</h4>
+        </div>
+
+        <div class="mb-3">
+            <p><strong>From:</strong> @Model.Sender</p>
+        </div>
+
+        <div class="mb-3">
+            <p><strong>To:</strong> @Model.Recipient</p>
+        </div>
+
+        <div class="mb-3">
+            <p><strong>Date Sent:</strong> @Model.SentDate</p>
+        </div>
+
+        <div class="mb-4">
+            <p><strong>Body:</strong></p>
+            <div class="email-body bg-light p-3 border rounded">
+                <p>@Model.Body</p>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <p><strong>Status:</strong> @(Model.IsRead ? "Read" : "Unread")</p>
+        </div>
+
+        <!-- Back to Inbox Button -->
+        <div class="text-center">
+            <a asp-action="Inbox" asp-route-email="@Model.Recipient" class="btn btn-secondary btn-lg">
+                <i class="bi bi-arrow-left-circle"></i> Back to Inbox
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Include Bootstrap Icons for the Back button icon -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Custom Styling for the Email Details -->
+<style>
+    /* Container Styling */
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Styling for the email details */
+    .email-details {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Add space between sections */
+    .mb-3 {
+        margin-bottom: 1rem;
+    }
+
+    .mb-4 {
+        margin-bottom: 2rem;
+    }
+
+    /* Styling for the email body */
+    .email-body {
+        background-color: #f1f3f5;
+        border: 1px solid #dcdfe1;
+        border-radius: 5px;
+        padding: 15px;
+    }
+
+    /* Styling for the Back button */
+    .btn-lg {
+        font-size: 18px;
+        padding: 12px 30px;
+    }
+
+    .btn-secondary {
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Back button icon styling */
+    .btn-secondary i {
+        margin-right: 8px;
+    }
+</style>
